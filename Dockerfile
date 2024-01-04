@@ -1,5 +1,3 @@
-FROM node:16.15.0-alpine
-WORKDIR /usr/src/app
+FROM node:18.17.1
+WORKDIR /src/app/front
 COPY . .
-
-CMD [ "npm", "start" ]
