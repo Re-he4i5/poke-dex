@@ -1,3 +1,20 @@
 .App {
   text-align: center;
 }
+
+.pokemonCardContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  flex-wrap: wrap;
+  margin: 0 5%;
+}
+
+.card {
+  margin: 5% 2%;
+  align-items: center;
+  justify-content: center;
+  color: #333333;
+  background-color: #f4f4f4f6;
+  border-radius: 3px;
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
