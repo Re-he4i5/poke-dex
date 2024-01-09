@@ -8,7 +8,10 @@ interface PokemonListResponse {
 }
 
 function App() {
+  const [loading, setLoading] = React.useState<boolean>(true);
   const [pokemonData, setPokemonData] = React.useState<any[]>([]);
+  const [nextURL, setNextURL] = React.useState<string>("");
+  const [prevURL, setPrevURL] = React.useState<string>("");
 
   useEffect(() => {
     const fetchPokemonData = async () => {
@@ -28,15 +31,25 @@ function App() {
       })
     );
     setPokemonData(_pokemonData);
+    // 確認用にローディングを遅延させる
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   };
 
   return (
     <div className="App">
-      <div className="pokemonCardContainer">
-        {pokemonData.map((pokemon, i) => {
-          return <Card key={i} pokemon={pokemon} />;
-        })}
-      </div>
+      {loading ? (
+        <>
+          <h1>Loading...</h1>
+        </>
+      ) : (
+        <div className="pokemonCardContainer">
+          {pokemonData.map((pokemon, i) => {
+            return <Card key={i} pokemon={pokemon} />;
+          })}
+        </div>
+      )}
     </div>
   );
 }
